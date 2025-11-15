@@ -48,7 +48,7 @@ go
 select * from Users
 select * from Video
 select * from Favorite
-select * from Video
+select * from Share
 
 
 -- 2. DỮ LIỆU MẪU BẢNG Users (10 BẢN GHI)
