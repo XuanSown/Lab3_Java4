@@ -1,25 +1,24 @@
-create database Lab3_java4
+create database Lab3
 go
 
-use Lab3_java4
+use Lab3
 go
 
 create table Users(
-    Id nvarchar(50) primary key,
-    Password nvarchar(50) not null,
-    Email nvarchar(50) not null unique,
-    Fullname nvarchar(50) not null,
-    Admin bit not null default 0
-);
-go
-
-create table Video(
     Id nvarchar(50) primary key,
     Title nvarchar(200) not null,
     Poster nvarchar(200),
     Views int not null default 0,
     Description nvarchar(max),
     Active bit not null default 1
+);
+go
+
+create table Video(Id nvarchar(50) primary key,
+    Password nvarchar(50) not null,
+    Email nvarchar(50) not null unique,
+    Fullname nvarchar(50) not null,
+    Admin bit not null default 0
 );
 go
 
@@ -44,12 +43,6 @@ create table Share(
     foreign key (VideoId) references Video(Id)
 );
 go
-
-select * from Users
-select * from Video
-select * from Favorite
-select * from Share
-
 
 -- 2. DỮ LIỆU MẪU BẢNG Users (10 BẢN GHI)
 INSERT INTO Users (Id, Password, Email, Fullname, Admin) VALUES
@@ -109,3 +102,8 @@ INSERT INTO Share (UserId, VideoId, Emails, ShareDate) VALUES
 (N'u09', N'v04', N'devteam@gmail.com', '2025-02-13'),
 (N'u10', N'v10', N'class@fpt.edu.vn', '2025-02-14');
 GO
+
+select * from Users
+select * from Video
+select * from Favorite
+select * from Share
