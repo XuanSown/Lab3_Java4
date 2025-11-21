@@ -58,7 +58,6 @@ h1 {
 							<td>${fav.video.title}</td>
 							<td>${fav.user.fullname}</td>
 							<td>
-								<%-- Định dạng ngày tháng thành dd/MM/yyyy cho đẹp --%>
 								<fmt:formatDate value="${fav.likeDate}" pattern="dd/MM/yyyy" />
 							</td>
 						</tr>

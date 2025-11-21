@@ -27,10 +27,12 @@ public class FavoriteByUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = "u01";
-		User user = this.userDAO.findById(userId);
-		if (user != null) {
-			req.setAttribute("user", user);
+		String fullname = req.getParameter("fullname"); // lay tham so tu URL
+		if (fullname != null && !fullname.trim().isEmpty()) {
+			User user = this.userDAO.findByFullname(fullname);
+			if (user != null) {
+				req.setAttribute("user", user);
+			}
 		}
 		req.getRequestDispatcher("/views/favoritesByUser.jsp").forward(req, resp);
 	}

@@ -1,5 +1,7 @@
 package impl;
 
+import java.util.List;
+
 import dao.UserDAO;
 import entity.User;
 import jakarta.persistence.EntityManager;
@@ -28,6 +30,27 @@ public class UserDAOImpl extends AbstractDAO<User, String> implements UserDAO {
 			return null;
 		} finally {
 			em.close(); // Luôn đóng EntityManager
+		}
+	}
+
+	@Override
+	public User findByFullname(String fullname) {
+		EntityManager em = XJPA.getEntityManager();
+		try {
+			String jpql = "select u from User u left join fetch u.favorites where u.fullname like :fullname";
+			TypedQuery<User> query = em.createQuery(jpql, User.class);
+			query.setParameter("fullname", "%" + fullname + "%");
+
+			List<User> users = query.getResultList();
+			if (users.isEmpty()) {
+				return null;
+			}
+			return users.get(0); // tra ve nguoi dung dau tien
+		} catch (NoResultException e) {
+			// TODO: handle exception
+			return null;
+		} finally {
+			em.close();
 		}
 	}
 }

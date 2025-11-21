@@ -8,7 +8,7 @@ public class XJPA {
 	private static EntityManagerFactory factory;
 
 	static {
-		factory = Persistence.createEntityManagerFactory("Lab3_java4");
+		factory = Persistence.createEntityManagerFactory("Lab4_java4");
 	}
 
 	public static EntityManager getEntityManager() {

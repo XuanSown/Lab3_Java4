@@ -14,4 +14,7 @@ public interface UserDAO {
 	User findById(String id);
 
 	List<User> findAll();
+
+	// tìm kiếm theo fullname
+	User findByFullname(String fullname);
 }
